@@ -1,16 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, OnInit, AfterViewInit, ViewChildren, QueryList } from '@angular/core';
 import { Category } from '../../models/categorie';
 import { Router } from '@angular/router';
+import { TestComponent } from '../test/test.component';
+import { CategoryComponent } from '../category/category.component';
 
 @Component({
   selector: 'app-list-categories',
   templateUrl: './list-categories.component.html',
   styleUrls: ['./list-categories.component.css'],
 })
-export class ListCategoriesComponent {
+export class ListCategoriesComponent implements AfterViewInit {
+  @ViewChild(TestComponent) testComponent!: TestComponent;
+  @ViewChild('i') input!: HTMLInputElement;
+  @ViewChildren(CategoryComponent) children!: QueryList<CategoryComponent>;
 
-  constructor(private router: Router) { }
-  
+  constructor(private router: Router) {}
+  ngAfterViewInit(): void {
+    console.log(this.input);
+    console.log(this.testComponent.test);
+    this.testComponent.start();
+    this.children.forEach((e) => console.log(e));
+  }
+
   title: string = '';
 
   test: string = '10';
@@ -87,13 +98,12 @@ export class ListCategoriesComponent {
     this.test = '12';
   }
   DeleteCategory(event: any) {
-    console.log(event)
-    this.categories= this.categories.filter((c) => c.id != event);
+    console.log(event);
+    this.categories = this.categories.filter((c) => c.id != event);
   }
 
   toUpdate(c: Category) {
     console.log(JSON.stringify(c));
-    this.router.navigate
-      (['/category/update/', JSON.stringify(c)]);
+    this.router.navigate(['/category/update/', JSON.stringify(c)]);
   }
 }

@@ -10,4 +10,9 @@ import { CommonModule } from '@angular/common';
 })
 export class TestComponent {
 
+  test: string = "value";
+
+  start() {
+    console.log("start function");
+  }
 }
