@@ -17,6 +17,7 @@ import { FilterProductPipe } from './pipe/filter-product.pipe';
 import { FormCategoryComponent } from './components/form-category/form-category.component';
 import { TestComponent } from './components/test/test.component';
 import { CategoryComponent } from './components/category/category.component';
+import { FormValidationComponent } from './components/form-validation/form-validation.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { CategoryComponent } from './components/category/category.component';
     FormCategoryComponent,
     CategoryComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule,TestComponent],
+  imports: [BrowserModule, AppRoutingModule, FormsModule,TestComponent,FormValidationComponent],
   providers: [],
   bootstrap: [AppComponent],
 })

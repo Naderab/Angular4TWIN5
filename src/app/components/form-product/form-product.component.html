@@ -6,9 +6,11 @@
     <div class="mb-3">
         <label>Name :</label>
         <input class="form-control" formControlName="name">
-        <div *ngIf="name.invalid && 
+    <app-form-validation [control]="name"></app-form-validation>
+
+       <!-- <div *ngIf="name.invalid && 
         (name.touched || 
-        name.dirty)">Name is required</div>
+        name.dirty)">Name is required</div>-->
     </div>
     <div class="mb-3">
         <label>Image :</label>
@@ -25,7 +27,9 @@
     <div class="mb-3" formGroupName="brand">
         <label>Brand Name :</label>
         <input class="form-control" formControlName="name">
-        <div *ngIf="brandName.invalid && 
+    <app-form-validation [control]="brandName"></app-form-validation>
+
+        <!--<div *ngIf="brandName.invalid && 
                 (brandName.touched || 
                 brandName.dirty)">
                 <div *ngIf="brandName.errors!['required']">
@@ -33,7 +37,7 @@
                 </div>
                 <div *ngIf="brandName.errors!['minlength']">
                     Brand Name must have at least 3 characters
-                </div></div>
+                </div></div>-->
         <label>Brand Logo :</label>
         <input class="form-control" formControlName="logo">
     </div>

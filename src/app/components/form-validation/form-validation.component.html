@@ -1,0 +1,7 @@
+<div *ngIf="control.invalid && (control.touched || control.dirty)" class="alert alert-danger">
+    <div *ngFor="let e of errors">
+        <p>{{message[e]}}</p>
+    </div>
+  <!--  <div *ngIf="title.errors!['required']">Title is required !</div>
+    <div *ngIf="title.errors!['minlength']">Title must have at least 3 charachters</div>-->
+</div>

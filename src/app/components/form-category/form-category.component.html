@@ -8,25 +8,28 @@
         Touched : {{title.touched}}<br>
         Dirty : {{title.dirty}}<br>
         Errors : {{title.errors | json}}
-        <div *ngIf="title.invalid && (title.touched || title.dirty)" class="alert alert-danger">
+        <app-form-validation [control]="title"></app-form-validation>
+       <!-- <div *ngIf="title.invalid && (title.touched || title.dirty)" class="alert alert-danger">
             <div *ngIf="title.errors!['required']">Title is required !</div>
             <div *ngIf="title.errors!['minlength']">Title must have at least 3 charachters</div>
-        </div>
+        </div>-->
         </div>
         <div class="mb-3">
             <label>Image :</label>
             <input type="text" class="form-control" name="image" [(ngModel)]="category.image" required #image="ngModel">
-        <div *ngIf="image.invalid && (image.touched || image.dirty)" class="alert alert-danger">
+        <app-form-validation [control]="image"></app-form-validation>
+            <!--   <div *ngIf="image.invalid && (image.touched || image.dirty)" class="alert alert-danger">
             Image is required !
-        </div>
+        </div>-->
         </div>
         <div class="mb-3">
             <label>Description :</label>
             <input type="text" class="form-control" name="description" [(ngModel)]="category.description" required minlength="10" #description="ngModel">
-        <div *ngIf="description.invalid && (description.touched || description.dirty)" class="alert alert-danger">
+        <app-form-validation [control]="description"></app-form-validation>
+            <!--<div *ngIf="description.invalid && (description.touched || description.dirty)" class="alert alert-danger">
             <div *ngIf="description.errors!['required']">Description is required !</div>
             <div *ngIf="description.errors!['minlength']">Description must have at least 10 charachters</div>
-        </div>
+        </div>-->
         </div>
         <div class="mb-3">
         <input type="submit" class="btn btn-primary" value="Submit" (click)="add(f,title)" [disabled]="f.invalid">
