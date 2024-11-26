@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
   selector: 'app-apropos',
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
 })
 export class AproposComponent {
 
+  constructor(private _categoryService: CategoryService) {
+  }
 }

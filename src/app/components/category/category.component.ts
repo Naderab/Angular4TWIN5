@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { Category } from 'src/app/models/categorie';
+import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
   selector: 'app-category',
@@ -7,9 +8,13 @@ import { Category } from 'src/app/models/categorie';
   styleUrls: ['./category.component.css'],
 })
 export class CategoryComponent implements OnChanges{
+
+  constructor(private _categoryService:CategoryService){}
   ngOnChanges(changes: SimpleChanges): void {
     console.log(changes)
   }
+
+  
   @Input() data!: Category;
 
   // @Input({ required: true }) title!: string;

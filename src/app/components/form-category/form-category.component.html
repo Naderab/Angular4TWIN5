@@ -4,10 +4,10 @@
         <div class="mb-3">
             <label>Title : </label>
             <input type="text" class="form-control" name="title" [(ngModel)]="category.title" required minlength="3" #title="ngModel">
-        Invalid : {{title.invalid}}<br>
+        <!--Invalid : {{title.invalid}}<br>
         Touched : {{title.touched}}<br>
         Dirty : {{title.dirty}}<br>
-        Errors : {{title.errors | json}}
+        Errors : {{title.errors | json}}-->
         <app-form-validation [control]="title"></app-form-validation>
        <!-- <div *ngIf="title.invalid && (title.touched || title.dirty)" class="alert alert-danger">
             <div *ngIf="title.errors!['required']">Title is required !</div>
