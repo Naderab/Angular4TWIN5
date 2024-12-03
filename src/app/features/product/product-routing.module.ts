@@ -4,7 +4,7 @@ import { FormProductComponent } from 'src/app/components/form-product/form-produ
 import { ProductComponent } from 'src/app/components/product/product.component';
 
 const routes: Routes = [
-  { path: 'add', component: FormProductComponent },
+  { path: 'add/:id', component: FormProductComponent },
   { path: ':id', component: ProductComponent }, 
 ];
 

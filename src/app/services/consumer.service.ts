@@ -13,10 +13,13 @@ export class ConsumerService {
       ? this._http.get<T>(`${this.baseUrl}${endpoint}/${id}`)
       : this._http.get<T>(`${this.baseUrl}${endpoint}`);
   }
-
-  add<T>() {}
-
-  update<T>() {}
-
-  delete<T>() {}
+  add<T>(endpoint: string, body: any) {
+    return this._http.post<T>(`${this.baseUrl}${endpoint}`, body);
+  }
+  update<T>(endpoint: string, body: any, id: number) {
+    return this._http.put<T>(`${this.baseUrl}${endpoint}/${id}`, body);
+  }
+  delete<T>(endpoint: string, id: number) {
+    return this._http.delete<T>(`${this.baseUrl}${endpoint}/${id}`);
+  }
 }

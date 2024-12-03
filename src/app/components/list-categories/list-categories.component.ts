@@ -62,7 +62,10 @@ export class ListCategoriesComponent implements AfterViewInit, OnInit,OnDestroy 
   }
   DeleteCategory(event: any) {
     console.log(event);
-    this.categories = this.categories.filter((c) => c.id != event);
+    this._consumer.delete<Category>('category', event).subscribe({
+      next : ()=>this.categories = this.categories.filter((c) => c.id != event)
+    })
+    
   }
 
   toUpdate(c: Category) {

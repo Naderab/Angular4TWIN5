@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, FormRecord, Validators } from '@angular/forms';
+import { ConsumerService } from 'src/app/services/consumer.service';
+import { ActivatedRoute } from '@angular/router';
+import { Product } from 'src/app/models/product';
 
 @Component({
   selector: 'app-form-product',
@@ -10,7 +13,7 @@ export class FormProductComponent implements OnInit {
   product!: FormGroup;
   search!: FormControl;
 
-  constructor(private fb:FormBuilder){}
+  constructor(private _activated:ActivatedRoute,private fb:FormBuilder,private _consumer:ConsumerService){}
   ngOnInit() {
     this.search = new FormControl();
     this.product = this.fb.group({
@@ -18,14 +21,15 @@ export class FormProductComponent implements OnInit {
       image: [],
       description: [],
       price: [],
-      brand: this.fb.group({
-        name: ["",[Validators.minLength(3),Validators.required]],
-        logo: [],
-      }),
+      brand:[],
+      // brand: this.fb.group({
+      //   name: ["",[Validators.minLength(3),Validators.required]],
+      //   logo: [],
+      // }),
       promotion: [],
       quantity: [],
-      nb_likes: [{values:0,disabled:true}],
-      tags: this.fb.array([]),
+      nb_likes: [0],
+      //tags: this.fb.array([]),
     });
     /*this.product = new FormGroup({
       name: new FormControl("Test",[Validators.required]),
@@ -60,9 +64,17 @@ export class FormProductComponent implements OnInit {
   }
 
   submit() {
-    console.log((this.product.get('tags') as FormArray).controls)
-    console.log(this.product.get('name'))
-    console.log(this.product.get('brand')!.get('name'));
-    console.log(this.product.getRawValue())
+    this._activated.params.subscribe({
+      next: (param) => {
+        this.product.value.categoryId = param['id']
+        this._consumer.add<Product>('product', this.product.value).subscribe({
+          next : ()=> {}
+        })
+      }
+    })
+    //console.log((this.product.get('tags') as FormArray).controls)
+    //console.log(this.product.get('name'))
+    //console.log(this.product.get('brand')!.get('name'));
+    //console.log(this.product.getRawValue())
   }
 }

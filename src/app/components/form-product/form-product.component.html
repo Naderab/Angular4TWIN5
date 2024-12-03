@@ -24,12 +24,16 @@
         <label>Price :</label>
         <input class="form-control" formControlName="price">
     </div>
-    <div class="mb-3" formGroupName="brand">
+    <div class="mb-3">
+        <label>Brand :</label>
+        <input class="form-control" formControlName="brand">
+    </div>
+    <!--<div class="mb-3" formGroupName="brand">
         <label>Brand Name :</label>
         <input class="form-control" formControlName="name">
     <app-form-validation [control]="brandName"></app-form-validation>
 
-        <!--<div *ngIf="brandName.invalid && 
+        <div *ngIf="brandName.invalid && 
                 (brandName.touched || 
                 brandName.dirty)">
                 <div *ngIf="brandName.errors!['required']">
@@ -37,10 +41,10 @@
                 </div>
                 <div *ngIf="brandName.errors!['minlength']">
                     Brand Name must have at least 3 characters
-                </div></div>-->
+                </div></div>
         <label>Brand Logo :</label>
         <input class="form-control" formControlName="logo">
-    </div>
+    </div>-->
     <div class="mb-3">
         <label>Promotion :</label>
         <input class="form-control" formControlName="promotion">
@@ -49,13 +53,13 @@
         <label>Quantity :</label>
         <input class="form-control" formControlName="quantity">
     </div>
-    <div class="mb-3" formArrayName="tags">
+   <!-- <div class="mb-3" formArrayName="tags">
         <label>Tags :</label>
     <div *ngFor="let t of tags">
         <input class="form-control" [formControl]="t">
     </div>
     <button (click)="addTags()">+</button>
-    </div>
+    </div>-->
     
     <div class="mb-3">
         <input type="submit" class="btn btn-primary" value="Add product" (click)="submit()">

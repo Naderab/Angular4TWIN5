@@ -9,7 +9,7 @@ import { FormCategoryComponent } from './components/form-category/form-category.
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'category/add', component: FormCategoryComponent },
-  { path: 'category/update/:objet', component: FormCategoryComponent },
+  { path: 'category/update/:id', component: FormCategoryComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   {
     path: 'products',
