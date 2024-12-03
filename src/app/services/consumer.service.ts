@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map } from 'rxjs';
+import { Product } from '../models/product';
 
 @Injectable({
   providedIn: 'root',
@@ -21,5 +23,15 @@ export class ConsumerService {
   }
   delete<T>(endpoint: string, id: number) {
     return this._http.delete<T>(`${this.baseUrl}${endpoint}/${id}`);
+  }
+
+
+  getProductsByCategory(endpoint: string, idC: any) {
+    return this._http.get<Product[]>(`${this.baseUrl}${endpoint}`)
+      .pipe(
+      map((element) =>
+        element.filter((e:Product)=>e.categoryId==idC)
+      )
+    )
   }
 }
