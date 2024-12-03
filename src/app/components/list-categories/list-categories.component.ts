@@ -1,26 +1,38 @@
-import { Component, ViewChild, OnInit, AfterViewInit, ViewChildren, QueryList } from '@angular/core';
+import { Component, ViewChild, OnInit, AfterViewInit, ViewChildren, QueryList, OnDestroy } from '@angular/core';
 import { Category } from '../../models/categorie';
 import { Router } from '@angular/router';
 import { TestComponent } from '../test/test.component';
 import { CategoryComponent } from '../category/category.component';
 import { CategoryService } from 'src/app/services/category.service';
+import { ConsumerService } from 'src/app/services/consumer.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-list-categories',
   templateUrl: './list-categories.component.html',
   styleUrls: ['./list-categories.component.css'],
 })
-export class ListCategoriesComponent implements AfterViewInit, OnInit {
+export class ListCategoriesComponent implements AfterViewInit, OnInit,OnDestroy {
   @ViewChild(TestComponent) testComponent!: TestComponent;
   @ViewChild('i') input!: HTMLInputElement;
   @ViewChildren(CategoryComponent) children!: QueryList<CategoryComponent>;
   categories: Category[] = [];
+  subscribers!: Subscription;
   constructor(
     private router: Router,
-    private _categoryService: CategoryService
+    private _categoryService: CategoryService,
+    private _consumer:ConsumerService
   ) {}
+  ngOnDestroy(): void {
+    this.subscribers.unsubscribe();
+  }
   ngOnInit(): void {
-    this.categories = this._categoryService.getCategories();
+    //this.categories = this._categoryService.getCategories();
+    this.subscribers = this._consumer.get<Category[]>('category').subscribe({
+      next: (data) => (this.categories = data),
+      error: (e) => console.log(e),
+      complete: () => console.log('Terminé'),
+    });
   }
   ngAfterViewInit(): void {
     console.log(this.input);

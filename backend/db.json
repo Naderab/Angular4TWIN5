@@ -1,0 +1,12 @@
+{
+  "product": [],
+  "category": [
+    {
+      "id": "177a",
+      "title": "test add",
+      "description": "test",
+      "image": "assets/images/product3.jpeg",
+      "available": true
+    }
+  ]
+}

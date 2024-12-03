@@ -18,7 +18,7 @@ import { FormCategoryComponent } from './components/form-category/form-category.
 import { TestComponent } from './components/test/test.component';
 import { CategoryComponent } from './components/category/category.component';
 import { FormValidationComponent } from './components/form-validation/form-validation.component';
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +32,9 @@ import { FormValidationComponent } from './components/form-validation/form-valid
     FormCategoryComponent,
     CategoryComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule,TestComponent,FormValidationComponent],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, TestComponent, FormValidationComponent,
+    HttpClientModule
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
