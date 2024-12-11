@@ -15,7 +15,7 @@ export class FormUserComponent implements OnInit {
   }
 
   add() {
-    this.user.category = "Customer";
+   // this.user.category = "Customer";
     
   }
 }

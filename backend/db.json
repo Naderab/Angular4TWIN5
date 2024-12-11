@@ -29,7 +29,14 @@
       "available": true
     }
   ],
-  "user" : [
-    
+  "users": [
+    {
+      "email": "test@gmail.com",
+      "password": "$2a$10$EjC4eIQL/AlDb4rGLz71BuGoS6t9F.JUK8sCtGM.pYcNgObj0Yi3e",
+      "name": "mohamed",
+      "username": "ben mohamed",
+      "role": "ROLE_ADMIN",
+      "id": 1
+    }
   ]
 }

@@ -1,5 +1,5 @@
 <!--{{title}}-->
-<div style="margin-bottom: 20px;">
+<!--<div style="margin-bottom: 20px;">
    <img [src]="data.image" [alt]="data.title" class="" height="250" width="275" >
     <h3>{{data.title | uppercase}}</h3>
     <button class="btn btn-primary" *ngIf="data.available == true" [routerLink]="['/products/',data.id]">Voir
@@ -8,4 +8,29 @@
    <button class="btn btn-primary" [routerLink]="['/category/update/',data.id]">Update</button>
 <button class="btn btn-primary" [routerLink]="['/products/add',data.id]">Add product</button>
     <p class="alert alert-danger" *ngIf="data.available == false">Catégorie non disponible</p>
+</div>-->
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img [src]="data.image" [alt]="data.title"
+                class="img-fluid rounded-start" />
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">{{data.title | uppercase}}</h5>
+            <button type="button" class="btn btn-primary btn-floating" *ngIf="data.available == true" [routerLink]="['/products/',data.id]">
+                <i class="fa-sharp fa-solid fa-eye"></i>
+            </button>
+            <button type="button" class="btn btn-outline-success btn-floating" [routerLink]="['/category/update/',data.id]">
+                <i class="fa-sharp fa-solid fa-pen"></i>
+            </button>
+            <button type="button" class="btn btn-danger btn-floating" (click)="deleteChild()">
+                <i class="fa-sharp fa-solid fa-trash"></i>
+            </button>
+            <button type="button" class="btn btn-dark btn-floating" [routerLink]="['/products/add',data.id]" >
+                <i class="fa-regular fa-plus"></i>
+            </button>
+            </div>
+        </div>
+    </div>
 </div>

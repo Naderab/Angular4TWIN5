@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
 import { ProductComponent } from './components/product/product.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
@@ -19,6 +19,7 @@ import { TestComponent } from './components/test/test.component';
 import { CategoryComponent } from './components/category/category.component';
 import { FormValidationComponent } from './components/form-validation/form-validation.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './components/auth/login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,9 +32,10 @@ import { HttpClientModule } from '@angular/common/http';
     NotFoundComponent,
     FormCategoryComponent,
     CategoryComponent,
+    LoginComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, TestComponent, FormValidationComponent,
-    HttpClientModule
+    HttpClientModule,ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
